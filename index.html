@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f6">
+  <meta name="description" content="An adaptive programming paradigms tutor powered by a transparent local learning model.">
+  <title>ParadigmPath — Learn by understanding</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#dashboard" data-nav="dashboard" aria-label="ParadigmPath home">
+        <span class="brand-mark">p<span>.</span></span>
+        <span class="brand-name">paradigm<span>path</span></span>
+      </a>
+
+      <div class="side-label">LEARNING SPACE</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-nav="dashboard">
+          <span class="nav-icon" aria-hidden="true">◫</span><span>Overview</span>
+        </button>
+        <button class="nav-link" data-nav="model">
+          <span class="nav-icon spark" aria-hidden="true">✳</span><span>How your AI works</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="side-label">YOUR LEARNING PROFILE</div>
+        <div class="profile-card">
+          <div class="avatar">S</div>
+          <div><strong>Student</strong><span>Building confidence</span></div>
+          <span class="profile-dots" aria-hidden="true">•••</span>
+        </div>
+        <div class="privacy-note"><span class="privacy-dot"></span>Your progress stays on this device.</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">p<span>.</span></span><span>paradigm<span>path</span></span></div>
+        <div class="breadcrumb"><span>Learning space</span><span class="crumb-slash">/</span><strong id="page-crumb">Overview</strong></div>
+        <div class="topbar-right"><span class="local-badge"><span class="privacy-dot"></span>AI runs locally</span><button class="help-button" data-nav="model" aria-label="Learn how the AI works">?</button></div>
+      </header>
+
+      <section id="dashboard-view" class="page-view">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">YOUR PERSONAL LEARNING PATH</p>
+            <h1>Make your next idea <span>click.</span></h1>
+            <p class="subhead">A little practice, chosen for what you need right now.</p>
+          </div>
+          <div class="streak-chip"><span aria-hidden="true">✦</span><span><strong id="streak-value">0</strong> practice sessions</span></div>
+        </div>
+
+        <section class="recommendation-card" aria-labelledby="recommendation-title">
+          <div class="rec-content">
+            <div class="rec-topline"><span class="rec-pill"><span class="spark-small">✦</span> YOUR AI RECOMMENDS</span><span class="rec-match" id="rec-match">Picked for you</span></div>
+            <h2 id="recommendation-title">A good next step is waiting.</h2>
+            <p id="recommendation-reason">Answer a few questions and your tutor will learn which concepts to focus on.</p>
+            <div class="rec-actions"><button class="primary-button" id="start-recommended">Start a quick practice <span aria-hidden="true">→</span></button><span class="time-estimate"><span aria-hidden="true">◷</span> About 3 minutes</span></div>
+          </div>
+          <div class="rec-visual" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="orbit-dot dot-a"></div><div class="orbit-dot dot-b"></div><div class="orbit-dot dot-c"></div>
+            <div class="brain-card"><span class="brain-spark">✦</span><strong id="rec-mastery">25%</strong><small>estimated mastery</small></div>
+            <div class="visual-caption">LEARN · ADAPT · GROW</div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Learning summary">
+          <article class="stat-card"><div class="stat-icon icon-purple">◈</div><div><span class="stat-label">Concepts explored</span><strong id="concepts-explored">0 <small>/ 4</small></strong></div><span class="stat-side-note">keep going</span></article>
+          <article class="stat-card"><div class="stat-icon icon-mint">✓</div><div><span class="stat-label">Questions answered</span><strong id="questions-answered">0</strong></div><span class="stat-side-note">every answer helps</span></article>
+          <article class="stat-card"><div class="stat-icon icon-peach">↗</div><div><span class="stat-label">Overall mastery</span><strong id="overall-mastery">25%</strong></div><span class="stat-side-note">model estimate</span></article>
+        </section>
+
+        <section class="section-heading">
+          <div><p class="eyebrow">YOUR CURRICULUM</p><h2>Four ways to think like a programmer</h2></div>
+          <button class="text-button" data-nav="model">See how AI adapts <span aria-hidden="true">→</span></button>
+        </section>
+        <section class="skill-grid" id="skill-grid" aria-label="Programming concepts"></section>
+
+        <footer class="dashboard-footer"><span><span class="privacy-dot"></span> Your answers and learning profile are saved only in this browser.</span><button class="footer-link" data-nav="model">About the learning model</button></footer>
+      </section>
+
+      <section id="model-view" class="page-view hidden" aria-labelledby="model-title">
+        <div class="model-intro">
+          <p class="eyebrow">A TRANSPARENT LEARNING MODEL</p>
+          <h1 id="model-title">The AI behind your path.</h1>
+          <p class="subhead">No black box, no cloud API. See what the tutor estimates and how your answers change it.</p>
+        </div>
+        <div class="model-banner"><div class="model-banner-icon">✳</div><div><strong>Bayesian Knowledge Tracing</strong><p>A classic probabilistic model estimates whether a learner has mastered each concept. Every answer updates that estimate.</p></div><span class="local-badge"><span class="privacy-dot"></span>Runs in your browser</span></div>
+        <div class="model-layout">
+          <section class="panel skill-model-panel">
+            <div class="panel-heading"><div><p class="eyebrow">CURRENT ESTIMATES</p><h2>What the tutor believes</h2></div><span class="model-tag">P(mastery)</span></div>
+            <div id="model-skills" class="model-skill-list"></div>
+            <div class="model-legend"><span><i class="legend-dot dot-low"></i>Needs practice</span><span><i class="legend-dot dot-mid"></i>Growing</span><span><i class="legend-dot dot-high"></i>Confident</span></div>
+          </section>
+          <section class="panel why-panel">
+            <p class="eyebrow">WHY THIS NEXT?</p><h2 id="model-recommendation-title">A recommendation with a reason.</h2>
+            <p id="model-recommendation-reason" class="why-copy"></p>
+            <div class="decision-box"><span class="decision-icon">↗</span><div><strong>Next practice priority</strong><p id="priority-explanation"></p></div></div>
+            <button class="primary-button full-button" id="model-start-practice">Practice this concept <span aria-hidden="true">→</span></button>
+          </section>
+        </div>
+        <section class="panel math-panel">
+          <div class="math-heading"><div><p class="eyebrow">UNDER THE HOOD</p><h2>How one answer updates mastery</h2><p>The model combines what it believed before with how likely that answer is if the learner has (or has not) mastered the topic.</p></div><div class="math-icon">ƒ(x)</div></div>
+          <div class="formula-grid">
+            <article class="formula-card"><span class="formula-step">01 · BEFORE THE ANSWER</span><h3>Prior mastery</h3><div class="formula">P(L)</div><p>Current probability the learner knows this concept.</p></article>
+            <div class="formula-arrow" aria-hidden="true">→</div>
+            <article class="formula-card"><span class="formula-step">02 · AFTER THE ANSWER</span><h3>Evidence update</h3><div class="formula">P(L | answer)</div><p>Correct answers can include guesses. Incorrect answers can include slips.</p></article>
+            <div class="formula-arrow" aria-hidden="true">→</div>
+            <article class="formula-card"><span class="formula-step">03 · LEARNING OVER TIME</span><h3>Knowledge growth</h3><div class="formula">P(L) + P(¬L) · T</div><p>A small learning transition raises the estimate after practice.</p></article>
+          </div>
+          <div class="parameter-strip"><span class="parameter-title">MODEL PARAMETERS</span><span><b>Guess</b> 20%</span><span><b>Slip</b> 10%</span><span><b>Learn per attempt</b> 12%</span><span class="parameter-note">Transparent defaults for the demo</span></div>
+        </section>
+        <section class="model-bottom-row"><div class="principle-card"><span class="principle-icon">◉</span><div><strong>It adapts to evidence, not identity.</strong><p>No name, account, or external service is needed. The model only uses quiz answers stored on this device.</p></div></div><button id="reset-progress" class="subtle-button">Reset learning data</button></section>
+      </section>
+
+      <section id="quiz-view" class="page-view hidden" aria-labelledby="quiz-title">
+        <div class="quiz-top"><button class="back-button" id="leave-quiz"><span aria-hidden="true">←</span> Back to overview</button><span class="quiz-session-label">PERSONALIZED PRACTICE</span></div>
+        <div id="quiz-content"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
